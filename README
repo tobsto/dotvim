@@ -1,3 +1,5 @@
+# What you need
+# sudo apt-get install cmake g++ vim libpython-dev ctags
 # Installation:
 
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
@@ -7,10 +9,31 @@ git clone https://github.com/tstollenw/dotvim.git ~/.vim
 
 ln -s ~/.vim/vimrc ~/.vimrc
 
+# create temp dir
+mkdir -p ~/.vim/tmp/undo
+mkdir -p ~/.vim/tmp/swap
+mkdir -p ~/.vim/tmp/backup
+
 # Switch to the `~/.vim` directory, and fetch submodules:
 
 cd ~/.vim
 git submodule init
 git submodule update
+cd -
 
 # Start vim and type :BundleInstall
+# Install YouCompleteMe
+cd ~/.vim/bundle/YouCompleteMe
+./install.sh --clang-completer
+cd -
+# get nice powerline fonts:
+# Source: https://powerline.readthedocs.org/en/latest/installation/linux.html#font-installation
+#     Download the latest version of PowerlineSymbols(https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf) and the latest version of the fontconfig file(https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf).
+#         Move PowerlineSymbols.otf to ~/.fonts/ (or another X font directory).
+#             Run fc-cache -vf ~/.fonts to update your font cache.
+#                 Move 10-powerline-symbols.conf to either ~/.fonts.conf.d/ or ~/.config/fontconfig/conf.d/, depending on your fontconfig version.
+#                     If you don’t see the arrow symbols, please close all instances of your terminal emulator or gvim. You may also have to restart X for the changes to take effect. If you still don’t see the arrow symbols, please submit an issue on GitHub.
+#
+# Put   
+# let g:airline_powerline_fonts=1
+# in .vimrc
