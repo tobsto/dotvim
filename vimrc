@@ -37,6 +37,10 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'sjl/gundo.vim'
 " sophisticated search and replace
 Bundle 'tpope/vim-abolish'
+" most recently used files
+Bundle 'vim-scripts/mru.vim'
+" close all buffers but the current
+Bundle 'BufOnly.vim'
 
 " colorschemes
 "Bundle 'flazz/vim-colorschemes'
@@ -112,24 +116,34 @@ set wildchar=<Tab> wildmenu wildmode=full
 set wildcharm=<C-Z>
 nnoremap <F10> :b <C-Z>
 
+" set make command to use parent build directory
+set makeprg=make\ -C\ ../build
+
 " ############################################################################
 " ### Key mappings
 " ############################################################################
 " key mapping
 " set leader key to ','
 let mapleader=','
-" Open and close NERDTree with F2
+" Open and close NERDTree with F2 or ,n
 map <F2> :NERDTreeToggle<CR>
 map <leader>n :NERDTreeToggle<CR>
-" Open and close Taglist with F3
+" Open and close Taglist with F3 or ,t
 map <F3> :TlistToggle<CR>
-map <leader>t :NERDTreeToggle<CR>
-" Open and close Gundo with F4
+map <leader>t :TlistToggle<CR>
+" Open and close Gundo with F4 or ,u
 map <F4> :GundoToggle<CR>
 map <leader>u :GundoToggle<CR>
-" Open Ag with F5
+" Open Ag with F5 or ,f
 map <F5> :Ag!<CR>
 map <leader>f :Ag!<CR>
+" Open Ag with F6 or ,m
+map <F6> :MRU<CR>
+map <leader>m :MRU<CR>
+
+" project view on files
+Bundle 'project.tar.gz'
+
 " YouCompleteMe shortcuts
 map <leader>yc :YcmForceCompileAndDiagnostics<CR>
 map <leader>yg :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -153,13 +167,21 @@ let g:syntastic_always_populate_loc_list=1
 " ############################################################################
 " ### UltiSnips
 " ############################################################################
-let g:UltiSnipsExpandTrigger='<c-j>'
+let g:UltiSnipsExpandTrigger='<c-s>'
 
 " ############################################################################
 " ### TagList
 " ############################################################################
 " open taglist on right hand side (to be compatible with nerdtree)
 let Tlist_Use_Right_Window=1
+
+" ############################################################################
+" ### CtrlP
+" ############################################################################
+" open new file in current window <c-y>
+let g:ctrlp_open_new_file = 'r'
+" open multiple files as hidden buffers
+let g:ctrlp_open_multiple_files = '1ij'
 
 " ############################################################################
 " ### Airline
@@ -175,4 +197,3 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 let g:airline_powerline_fonts=1
-let g:airline_symbols.space = "\ua0"
