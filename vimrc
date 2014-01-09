@@ -41,6 +41,10 @@ Bundle 'tpope/vim-abolish'
 Bundle 'vim-scripts/mru.vim'
 " close all buffers but the current
 Bundle 'BufOnly.vim'
+" switch between source and header file quickly
+Bundle 'a.vim'
+" quick switching between buffers
+Bundle 'bufexplorer.zip'
 
 " colorschemes
 "Bundle 'flazz/vim-colorschemes'
@@ -140,9 +144,8 @@ map <leader>f :Ag!<CR>
 " Open Ag with F6 or ,m
 map <F6> :MRU<CR>
 map <leader>m :MRU<CR>
-
-" project view on files
-Bundle 'project.tar.gz'
+" Open buffer explorer with ,b
+map <leader>b :BufExplorerVerticalSplit<CR>
 
 " YouCompleteMe shortcuts
 map <leader>yc :YcmForceCompileAndDiagnostics<CR>
