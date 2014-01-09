@@ -129,7 +129,9 @@ set makeprg=make\ -C\ ../build
 " ############################################################################
 " ### Key mappings
 " ############################################################################
-" key mapping
+" page up page down with c-j and c-k
+"map <c-k> <PageUp>
+"map <c-j> <PageDown>
 " set leader key to ','
 let mapleader=','
 " Open and close NERDTree with F2 or ,n
@@ -173,7 +175,9 @@ let g:syntastic_always_populate_loc_list=1
 " ############################################################################
 " ### UltiSnips
 " ############################################################################
-let g:UltiSnipsExpandTrigger='<c-s>'
+let g:UltiSnipsExpandTrigger="<C-X>"
+let g:UltiSnipsJumpForwardTrigger="<C-X>"
+let g:UltiSnipsJumpBackwardTrigger="<C-Y>"
 
 " ############################################################################
 " ### TagList
@@ -193,7 +197,7 @@ let g:ctrlp_open_multiple_files = '1ij'
 " ### Session
 " ############################################################################
 " Disable prompt when quitting
-let g:session_autosave = 'no'
+" let g:session_autosave = 'no'
 
 " ############################################################################
 " ### Airline
