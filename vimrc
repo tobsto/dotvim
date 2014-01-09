@@ -45,6 +45,9 @@ Bundle 'BufOnly.vim'
 Bundle 'a.vim'
 " quick switching between buffers
 Bundle 'bufexplorer.zip'
+" Save vim session
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-session'
 
 " colorschemes
 "Bundle 'flazz/vim-colorschemes'
@@ -185,6 +188,12 @@ let Tlist_Use_Right_Window=1
 let g:ctrlp_open_new_file = 'r'
 " open multiple files as hidden buffers
 let g:ctrlp_open_multiple_files = '1ij'
+
+" ############################################################################
+" ### Session
+" ############################################################################
+" Disable prompt when quitting
+let g:session_autosave = 'no'
 
 " ############################################################################
 " ### Airline
