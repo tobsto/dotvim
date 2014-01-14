@@ -54,9 +54,7 @@ if cont("Initial installation"):
 
 # Install YouCompleteMe
 if cont("Finish YouCompleteMe installation"):
-    run("cd ~/.vim/bundle/YouCompleteMe")
-    run("./install.sh --clang-completer")
-    run("cd -")
+    run("cd ~/.vim/bundle/YouCompleteMe; ./install.sh --clang-completer; cd -")
 
 # Nice powerline symbols:
 # Source: https://powerline.readthedocs.org/en/latest/installation/linux.html#font-installation
