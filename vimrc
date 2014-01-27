@@ -52,7 +52,8 @@ Bundle 'xolox/vim-session'
 " Bundle 'jalcine/cmake.vim'
 " Doxygen 
 Bundle 'vim-scripts/DoxygenToolkit.vim'
-
+" python
+Bundle 'klen/python-mode'
 
 
 " colorschemes
@@ -226,6 +227,33 @@ let g:DoxygenToolkit_licenseTag="\\copyright Copyright 2013 German Aerospace Cen
 
 
 " ############################################################################
+" ### python-mode
+" ############################################################################
+" turn of folding
+let g:pymode_folding = 0
+" remove automatic line numbers and put everything else back
+let g:pymode_options = 0
+setlocal complete+=t
+setlocal formatoptions-=t
+"if v:version > 702 && !&relativenumber
+"    setlocal number
+"endif
+setlocal nowrap
+setlocal textwidth=79
+setlocal commentstring=#%s
+setlocal define=^\s*\\(def\\\\|class\\)
+" ignore pep8 warnings: line to long
+let g:pymode_lint_ignore = "E501,E302"
+" python-mode working together with syntatic (see help syntastic-pymode)
+"let g:pymode_lint_write = 0
+
+" ############################################################################
+" ### syntastic
+" ############################################################################
+" disable pep8 warnings: line to long
+" let g:syntastic_python_checker_args="--ignore=E501"
+
+" ############################################################################
 " ### Airline
 " ############################################################################
 " always visible
@@ -239,3 +267,10 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 let g:airline_powerline_fonts=1
+
+
+" ############################################################################
+" include my own check style script and map key
+" ############################################################################
+source ~/.vim/styleChecker.vim
+map <leader>c :CheckStyle<CR>
