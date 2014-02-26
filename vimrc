@@ -33,6 +33,8 @@ Bundle 'vim-scripts/taglist.vim'
 Bundle 'bling/vim-airline'
 " Git
 Bundle 'tpope/vim-fugitive'
+" surround code with parentheses, quotes, etc
+Bundle 'tpope/vim-surround'
 " sophisticated undo
 Bundle 'sjl/gundo.vim'
 " sophisticated search and replace
@@ -54,7 +56,14 @@ Bundle 'xolox/vim-session'
 Bundle 'vim-scripts/DoxygenToolkit.vim'
 " python
 Bundle 'klen/python-mode'
-
+" xml
+Bundle 'sukima/xmledit'
+" easy motion
+Bundle 'Lokaltog/vim-easymotion'
+" color themes
+Bundle 'flazz/vim-colorschemes'
+" comment/uncommend code
+Bundle 'scrooloose/nerdcommenter'
 
 " colorschemes
 "Bundle 'flazz/vim-colorschemes'
@@ -153,7 +162,7 @@ map <leader>u :GundoToggle<CR>
 " Open Ag with F5 or ,f
 map <F5> :Ag!<CR>
 map <leader>f :Ag!<CR>
-" Open Ag with F6 or ,m
+" Open Ag with F6 or ,r
 map <F6> :MRU<CR>
 map <leader>m :MRU<CR>
 " Open buffer explorer with ,b
@@ -168,6 +177,9 @@ map <leader>yd :YcmDebugInfo<CR>
 :nnoremap <C-h> :bprevious<CR>
 " yank word under cursor
 :noremap <bvey> <leader>w<CR>
+
+" map parallel make command to ,m
+map <leader>m :w <bar> make -j 16<CR>
 
 " ############################################################################
 " ### YouCompleteMe
@@ -191,6 +203,9 @@ let g:UltiSnipsJumpBackwardTrigger="<C-Y>"
 " ############################################################################
 " open taglist on right hand side (to be compatible with nerdtree)
 let Tlist_Use_Right_Window=1
+" the ":TlistToggle" command opens the taglist window
+" and moves the cursor to the taglist window.
+let Tlist_GainFocus_On_ToggleOpen=1
 
 " ############################################################################
 " ### CtrlP
@@ -205,6 +220,8 @@ let g:ctrlp_open_multiple_files = '1ij'
 " ############################################################################
 " Disable prompt when quitting
 " let g:session_autosave = 'no'
+" Disable autoload of default session
+let g:session_autoload = 'no'
 "
 " ############################################################################
 " ### DoxygenToolkit
@@ -270,7 +287,18 @@ let g:airline_powerline_fonts=1
 
 
 " ############################################################################
+" IMPORTANT: Uncomment one of the following lines to force
+" " using 256 colors (or 88 colors) if your terminal supports it,
+" " but does not automatically use 256 colors by default.
+set t_Co=256
+" "set t_Co=88
+" let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
+" colorscheme rastafari
+
+
+" ############################################################################
 " include my own check style script and map key
 " ############################################################################
 source ~/.vim/styleChecker.vim
 map <leader>c :CheckStyle<CR>
+
