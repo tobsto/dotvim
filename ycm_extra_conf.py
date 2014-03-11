@@ -1,6 +1,4 @@
-# This file is NOT licensed under the GPLv3, which is the license for the rest
-# of YouCompleteMe.
-#
+# This file is NOT licensed under the GPLv3, which is the license for the rest # of YouCompleteMe.  #
 # Here's the license text for this file:
 #
 # This is free and unencumbered software released into the public domain.
@@ -106,7 +104,12 @@ flags = [
 #
 # Most projects will NOT need to set this to anything; you can just change the
 # 'flags' list of compilation flags. Notice that YCM itself uses that approach.
-compilation_database_folder = os.path.abspath(os.path.join(os.getcwd(), os.pardir + '/build/'))
+compilation_database_folder=''
+if (os.getcwd()!='/home/stol_to'):
+    compilation_database_folder = os.path.abspath(os.path.join(os.getcwd(), os.pardir + '/build/'))
+#write("use compilation database folder: %s\n" % compilation_database_folder)
+#write(os.path.abspath(os.path.join(os.getcwd(), os.pardir + '/build/')) + '\n')
+
 
 if os.path.exists( compilation_database_folder ):
   database = ycm_core.CompilationDatabase( compilation_database_folder )
