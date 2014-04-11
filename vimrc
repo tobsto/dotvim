@@ -55,7 +55,7 @@ Bundle 'xolox/vim-session'
 " Doxygen 
 Bundle 'vim-scripts/DoxygenToolkit.vim'
 " python
-Bundle 'klen/python-mode'
+" Bundle 'klen/python-mode'
 " xml
 Bundle 'sukima/xmledit'
 " easy motion
@@ -140,7 +140,9 @@ set wildcharm=<C-Z>
 nnoremap <F10> :b <C-Z>
 
 " set make command to use parent build directory
-set makeprg=make\ -C\ ../build
+" set makeprg=make\ -C\ ../build
+source ~/.vim/setMakeprg.vim
+call SetMakePrg()
 
 " ############################################################################
 " ### Key mappings
