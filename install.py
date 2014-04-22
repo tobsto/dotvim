@@ -70,8 +70,8 @@ if cont("Install powerline symbols"):
         # Run fc-cache -vf ~/.fonts to update your font cache.
         run("fc-cache -vf ~/.fonts")
         # Move 10-powerline-symbols.conf to either ~/.fonts.conf.d/ or ~/.config/fontconfig/conf.d/, depending on your fontconfig version.
-        run("mkdir -p .config/fontconfig/conf.d/")
-        run("mv 10-powerline-symbols.conf .config/fontconfig/conf.d/")
+        run("mkdir -p ~/.config/fontconfig/conf.d/")
+        run("mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/")
         # If you don't see the arrow symbols, please close all instances of your terminal emulator or gvim. 
         # You may also have to restart X for the changes to take effect. 
 
