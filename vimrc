@@ -144,6 +144,10 @@ nnoremap <F10> :b <C-Z>
 source ~/.vim/setMakeprg.vim
 call SetMakePrg()
 
+" syntax highlighting for arduino files
+" au BufRead,BufNewFile *.ino set filetype=cpp
+au BufReadPost *.ino set syntax=cpp
+
 " ############################################################################
 " ### Key mappings
 " ############################################################################
@@ -192,6 +196,9 @@ let g:ycm_confirm_extra_conf=0
 let g:ycm_complete_in_comments=1
 let g:ycm_complete_in_strings=1
 let g:syntastic_always_populate_loc_list=1
+let g:syntastic_mode_map = { 'mode': 'active',
+            \ 'active_filetypes': [],
+            \ 'passive_filetypes': ['ino'] }
 
 " ############################################################################
 " ### UltiSnips
