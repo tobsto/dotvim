@@ -170,9 +170,11 @@ map <F5> :Ag!<CR>
 map <leader>f :Ag!<CR>
 " Open Ag with F6 or ,r
 map <F6> :MRU<CR>
-map <leader>m :MRU<CR>
+map <leader>r :MRU<CR>
 " Open buffer explorer with ,b
 map <leader>b :BufExplorerVerticalSplit<CR>
+" Set paste mode toggle to ,p
+set pastetoggle=<leader>p
 
 " YouCompleteMe shortcuts
 map <leader>yc :YcmForceCompileAndDiagnostics<CR>
