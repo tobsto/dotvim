@@ -188,6 +188,8 @@ map <leader>yd :YcmDebugInfo<CR>
 
 " map parallel make command to ,m
 map <leader>m :w <bar> make -j 16<CR>
+" map parallel make install command to ,i
+map <leader>i :w <bar> make -j 16 install<CR>
 
 " ############################################################################
 " ### YouCompleteMe
@@ -271,7 +273,7 @@ setlocal textwidth=79
 setlocal commentstring=#%s
 setlocal define=^\s*\\(def\\\\|class\\)
 " ignore pep8 warnings: line to long
-let g:pymode_lint_ignore = "E501,E302"
+let g:pymode_lint_ignore = "E501,E302,C901"
 " python-mode working together with syntatic (see help syntastic-pymode)
 "let g:pymode_lint_write = 0
 

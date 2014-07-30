@@ -31,9 +31,11 @@ import ycm_core
 import subprocess
 import os
 
+homedir = os.getenv("HOME")
 def write (s):
-    f=open('/home/stol_to/ycm.log', 'a')
+    f=open(homedir + 'ycm.log', 'a')
     f.write(s + '\n')
+    f.close()
 
 # These are the compilation flags that will be used in case there's no
 # compilation database set (by default, one is not set).
@@ -41,60 +43,7 @@ def write (s):
 flags = [
 '-Wall',
 '-Wextra',
-'-Werror',
-'-Wc++98-compat',
-'-Wno-long-long',
-'-Wno-variadic-macros',
-'-fexceptions',
-'-DNDEBUG',
-# You 100% do NOT need -DUSE_CLANG_COMPLETER in your flags; only the YCM
-# source code needs it.
-'-DUSE_CLANG_COMPLETER',
-# THIS IS IMPORTANT! Without a "-std=<something>" flag, clang won't know which
-# language to use when compiling headers. So it will guess. Badly. So C++
-# headers will be compiled as C headers. You don't want that so ALWAYS specify
-# a "-std=<something>".
-# For a C project, you would set this to something like 'c99' instead of
-# 'c++11'.
-'-std=c++11',
-# ...and the same thing goes for the magic -x option which specifies the
-# language that the files to be compiled are written in. This is mostly
-# relevant for c++ headers.
-# For a C project, you would set this to 'c' instead of 'c++'.
-'-x',
-'c++',
-'-isystem',
-'../BoostParts',
-'-isystem',
-# This path will only work on OS X, but extra paths that don't exist are not
-# harmful
-'/System/Library/Frameworks/Python.framework/Headers',
-'-isystem',
-'../llvm/include',
-'-isystem',
-'../llvm/tools/clang/include',
-'-I',
-'.',
-'-I',
-'./ClangCompleter',
-'-isystem',
-'./tests/gmock/gtest',
-'-isystem',
-'./tests/gmock/gtest/include',
-'-isystem',
-'./tests/gmock',
-'-isystem',
-'./tests/gmock/include',
-'-isystem',
-'/usr/include',
-'-isystem',
-'/usr/local/include',
-'-isystem',
-'/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/c++/v1',
-'-isystem',
-'/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/5.0/include',
-'-isystem',
-'/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
+'-Werror'
 ]
 
 
@@ -105,8 +54,17 @@ flags = [
 # Most projects will NOT need to set this to anything; you can just change the
 # 'flags' list of compilation flags. Notice that YCM itself uses that approach.
 compilation_database_folder=''
-if (os.getcwd()!='/home/stol_to'):
-    compilation_database_folder = os.path.abspath(os.path.join(os.getcwd(), os.pardir + '/build/'))
+if (os.getcwd()!=homedir):
+    builddirs = []
+    builddirs.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir + '/build/')))
+    builddirs.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir + '/' +  os.pardir + '/build/')))
+    builddirs.append(os.getcwd()+'/build/')
+    for builddir in builddirs:
+        if os.path.exists(builddir):
+            compilation_database_folder = builddir
+            break
+
+#write("possibile build dirs: %s" % builddirs)
 #write("use compilation database folder: %s\n" % compilation_database_folder)
 #write(os.path.abspath(os.path.join(os.getcwd(), os.pardir + '/build/')) + '\n')
 
