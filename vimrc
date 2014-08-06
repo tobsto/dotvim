@@ -213,6 +213,8 @@ let g:syntastic_mode_map = { 'mode': 'active',
 "let g:UltiSnipsExpandTrigger="<C-j>"
 "let g:UltiSnipsJumpForwardTrigger="<C-j>"
 "let g:UltiSnipsJumpBackwardTrigger="<C-S-j>"
+" set ultisnips search directory
+let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips/"]
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
