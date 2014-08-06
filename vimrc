@@ -23,6 +23,9 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'Valloric/YouCompleteMe'
 " Snippets
 Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
+" Make YCM and UltiSnips work together
+Bundle 'ervandew/supertab'
 " Syntax checker
 Bundle 'scrooloose/syntastic'
 " Find pattern in files (requires ag=the_silver_searcher)
@@ -55,7 +58,7 @@ Bundle 'xolox/vim-session'
 " Doxygen 
 Bundle 'vim-scripts/DoxygenToolkit.vim'
 " python
-" Bundle 'klen/python-mode'
+Bundle 'klen/python-mode'
 " xml
 Bundle 'sukima/xmledit'
 " easy motion
@@ -136,8 +139,8 @@ set completeopt=menuone,longest
 " conveniently access buffers
 set wildchar=<Tab> wildmenu wildmode=full
 " Now, pressing Tab on the command line will show a menu to complete buffer and file names. If you include the following, you can also press F10 to open the buffer menu.
-set wildcharm=<C-Z>
-nnoremap <F10> :b <C-Z>
+"set wildcharm=<C-Z>
+"nnoremap <F10> :b <C-Z>
 
 " set make command to use parent build directory
 " set makeprg=make\ -C\ ../build
@@ -207,9 +210,19 @@ let g:syntastic_mode_map = { 'mode': 'active',
 " ############################################################################
 " ### UltiSnips
 " ############################################################################
-let g:UltiSnipsExpandTrigger="<C-X>"
-let g:UltiSnipsJumpForwardTrigger="<C-X>"
-let g:UltiSnipsJumpBackwardTrigger="<C-Y>"
+"let g:UltiSnipsExpandTrigger="<C-j>"
+"let g:UltiSnipsJumpForwardTrigger="<C-j>"
+"let g:UltiSnipsJumpBackwardTrigger="<C-S-j>"
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " ############################################################################
 " ### TagList
@@ -307,7 +320,7 @@ set t_Co=256
 " "set t_Co=88
 " let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 " colorscheme rastafari
-
+"
 
 " ############################################################################
 " include my own check style script and map key
