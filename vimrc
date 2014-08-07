@@ -23,7 +23,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'Valloric/YouCompleteMe'
 " Snippets
 Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
+"Bundle 'honza/vim-snippets'
 " Make YCM and UltiSnips work together
 Bundle 'ervandew/supertab'
 " Syntax checker
@@ -214,7 +214,7 @@ let g:syntastic_mode_map = { 'mode': 'active',
 "let g:UltiSnipsJumpForwardTrigger="<C-j>"
 "let g:UltiSnipsJumpBackwardTrigger="<C-S-j>"
 " set ultisnips search directory
-let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips/"]
+let g:runtimepath = "~/.vim/"
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
