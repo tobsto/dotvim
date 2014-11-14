@@ -68,8 +68,7 @@ Bundle 'flazz/vim-colorschemes'
 " comment/uncommend code
 Bundle 'scrooloose/nerdcommenter'
 
-" colorschemes
-"Bundle 'flazz/vim-colorschemes'
+Bundle 'octol/vim-cpp-enhanced-highlight'
 
 filetype plugin indent on     " required!
 "
@@ -321,7 +320,9 @@ let g:airline_powerline_fonts=1
 set t_Co=256
 " "set t_Co=88
 " let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
-" colorscheme rastafari
+colorscheme molokai
+" let g:solarized_termcolors=256
+" colorscheme solarized
 "
 
 " ############################################################################
