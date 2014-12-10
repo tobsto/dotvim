@@ -58,7 +58,7 @@ Bundle 'xolox/vim-session'
 " Doxygen 
 Bundle 'vim-scripts/DoxygenToolkit.vim'
 " python
-Bundle 'klen/python-mode'
+"Bundle 'klen/python-mode'
 " xml
 Bundle 'sukima/xmledit'
 " easy motion
@@ -69,6 +69,8 @@ Bundle 'flazz/vim-colorschemes'
 Bundle 'scrooloose/nerdcommenter'
 
 Bundle 'octol/vim-cpp-enhanced-highlight'
+
+Bundle 'davidhalter/jedi-vim'
 
 filetype plugin indent on     " required!
 "
@@ -224,6 +226,20 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" ############################################################################
+" ### Jedi
+" ############################################################################
+let g:jedi#goto_assignments_command = "<leader>jg"
+let g:jedi#goto_definitions_command = "<leader>jd"
+let g:jedi#documentation_command = "<leader>jh"
+let g:jedi#usages_command = "<leader>jn"
+let g:jedi#completions_command = "<leader>jc"
+let g:jedi#rename_command = "<leader>jr"
+let g:jedi#show_call_signatures = "1"
+
+let g:SuperTabDefaultCompletionType = "context"
+let g:jedi#popup_on_dot = 0
 
 " ############################################################################
 " ### TagList
