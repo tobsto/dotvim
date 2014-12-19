@@ -58,7 +58,7 @@ Bundle 'xolox/vim-session'
 " Doxygen 
 Bundle 'vim-scripts/DoxygenToolkit.vim'
 " python
-"Bundle 'klen/python-mode'
+Bundle 'klen/python-mode'
 " xml
 Bundle 'sukima/xmledit'
 " easy motion
@@ -293,19 +293,28 @@ let g:DoxygenToolkit_licenseTag="\\copyright Copyright 2013 German Aerospace Cen
 let g:pymode_folding = 0
 " remove automatic line numbers and put everything else back
 let g:pymode_options = 0
-setlocal complete+=t
-setlocal formatoptions-=t
-"if v:version > 702 && !&relativenumber
-"    setlocal number
-"endif
-setlocal nowrap
-setlocal textwidth=79
-setlocal commentstring=#%s
-setlocal define=^\s*\\(def\\\\|class\\)
+
+" syntax highlighting
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+" disaple rope autocompletion in favour of jedi
+let g:pymode_rope = 0
+
+" Turn on code checking                                          *'g:pymode_lint'*
+let g:pymode_lint = 1
+" do not Check code on every save (if file has been modified)  *'g:pymode_lint_on_write'*
+let g:pymode_lint_on_write = 1
+" Check code when editing (on the fly)                        *'g:pymode_lint_on_fly'*
+let g:pymode_lint_on_fly = 0
+" Show error message if cursor placed at the error line  *'g:pymode_lint_message'*
+let g:pymode_lint_message = 1
 " ignore pep8 warnings: line to long
 let g:pymode_lint_ignore = "E501,E302,C901"
-" python-mode working together with syntatic (see help syntastic-pymode)
-"let g:pymode_lint_write = 0
+" Auto open cwindow (quickfix) if any errors have been found  *'g:pymode_lint_cwindow'*
+let g:pymode_lint_cwindow = 1
 
 " ############################################################################
 " ### syntastic
