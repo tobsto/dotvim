@@ -52,6 +52,13 @@ if cont("Initial installation"):
     # Install Bundles
     run("vim +BundleInstall +qall")
 
+if cont("Install TiGL C++ Style Checker"):
+    run("mkdir -p ~/.vim/styleChecker")
+    run("cd ~/.vim/styleChecker")
+    run("wget https://nsiqcppstyle.googlecode.com/files/nsiqcppstyle_0.2.2.3.tar.gz -O ~/.vim/styleChecker/nsiqcppstyle.tar.gz")
+    run("tar -xzf ~/.vim/styleChecker/nsiqcppstyle.tar.gz -C ~/.vim/styleChecker/")
+    run("rm ~/.vim/styleChecker/nsiqcppstyle.tar.gz")
+
 # Install YouCompleteMe
 if cont("Finish YouCompleteMe installation"):
     run("cd ~/.vim/bundle/YouCompleteMe; ./install.sh --clang-completer; cd -")
@@ -72,8 +79,8 @@ if cont("Install powerline symbols"):
         # Move 10-powerline-symbols.conf to either ~/.fonts.conf.d/ or ~/.config/fontconfig/conf.d/, depending on your fontconfig version.
         run("mkdir -p ~/.config/fontconfig/conf.d/")
         run("mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/")
-        # If you don't see the arrow symbols, please close all instances of your terminal emulator or gvim. 
-        # You may also have to restart X for the changes to take effect. 
+        # If you don't see the arrow symbols, please close all instances of your terminal emulator or gvim.
+        # You may also have to restart X for the changes to take effect.
 
     else:
         # Download the latest version of PowerlineSymbols
@@ -84,5 +91,5 @@ if cont("Install powerline symbols"):
         run("fc-cache -vf ~/.fonts")
         # clean up
         run("rm -rf powerline-fonts")
-        # If you don't see the arrow symbols, please close all instances of your terminal emulator or gvim. 
-        # You may also have to restart X for the changes to take effect. 
+        # If you don't see the arrow symbols, please close all instances of your terminal emulator or gvim.
+        # You may also have to restart X for the changes to take effect.

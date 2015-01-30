@@ -3,7 +3,7 @@
 " ############################################################################
 function! CheckStyle(errornumber)
     execute 'silent!' . 'write'
-    let errmsg = system("python /home/stol_to/projects/tigl/analysis/reformat/styleChecker.py -f " . expand("%") . " -e" . " " . a:errornumber)
+    let errmsg = system("python $HOME/.vim/styleChecker/styleChecker.py -f " . expand("%") . " -e" . " " . a:errornumber)
     if errmsg =~ "style check successful"
        echo "style check successful" 
     elseif errmsg =~ "style check error"
@@ -15,7 +15,7 @@ function! CheckStyle(errornumber)
         execute goToLine
         let goToColumn = 'normal!' . errmsgs[2] . '|'
         execute goToColumn
-        echom "Style error in line, column " . errmsgs[1] . ", " errmsgs[2] . " : " . errmsgs[3] . " : " . errmsgs[4]
+        echom "Style error in line " . errmsgs[1] . ",  column " errmsgs[2] . " : " . errmsgs[3] . " : " . errmsgs[4]
     endif
 endfunction
 command! CheckStyle call CheckStyle(1)

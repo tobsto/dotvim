@@ -354,5 +354,11 @@ colorscheme molokai
 " include my own check style script and map key
 " ############################################################################
 source ~/.vim/styleChecker.vim
-map <leader>c :CheckStyle<CR>
+map <leader>s :CheckStyle<CR>
+map <leader>ss :CheckStyleNext 2<CR>
+map <leader>sss :CheckStyleNext 3<CR>
+map <leader>ssss :CheckStyleNext 4<CR>
+map <leader>sssss :CheckStyleNext 5<CR>
+map <leader>ssssss :CheckStyleNext 6<CR>
+map <leader>sssssss :CheckStyleNext 7<CR>
 
