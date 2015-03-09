@@ -362,3 +362,9 @@ map <leader>sssss :CheckStyleNext 5<CR>
 map <leader>ssssss :CheckStyleNext 6<CR>
 map <leader>sssssss :CheckStyleNext 7<CR>
 
+
+" ############################################################################
+" include my own style formatter
+" ############################################################################
+source ~/.vim/styleFormatter.vim
+" map <leader>S :FormatCode<CR>
