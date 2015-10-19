@@ -70,7 +70,10 @@ Bundle 'scrooloose/nerdcommenter'
 
 Bundle 'octol/vim-cpp-enhanced-highlight'
 
-Bundle 'davidhalter/jedi-vim'
+" increment columns
+Bundle 'vim-scripts/VisIncr'
+
+"Bundle 'davidhalter/jedi-vim'
 
 filetype plugin indent on     " required!
 "
