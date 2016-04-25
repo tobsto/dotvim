@@ -3,14 +3,20 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 function! SetMakePrg()
     let cwd = getcwd()
-    if isdirectory(cwd . '/../build')
-        set makeprg=make\ -C\ ../build
-    elseif isdirectory(cwd . '/../../build')
-        set makeprg=make\ -C\ ../../build
-    elseif isdirectory(cwd . '/build')
-        set makeprg=make\ -C\ build
-    else
+    if filereadable('makefile')
         set makeprg=make
+    elseif filereadable('Makefile')
+        set makeprg=make
+    else
+        if isdirectory(cwd . '/../build')
+            set makeprg=make\ -C\ ../build
+        elseif isdirectory(cwd . '/../../build')
+            set makeprg=make\ -C\ ../../build
+        elseif isdirectory(cwd . '/build')
+            set makeprg=make\ -C\ build
+        else
+            set makeprg=make
+        endif
     endif
     let parg = ''
     if filereadable('/proc/cpuinfo')
