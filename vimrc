@@ -73,8 +73,6 @@ Bundle 'octol/vim-cpp-enhanced-highlight'
 " increment columns
 Bundle 'vim-scripts/VisIncr'
 
-"Bundle 'davidhalter/jedi-vim'
-
 filetype plugin indent on     " required!
 "
 " Brief help
@@ -155,6 +153,8 @@ call SetMakePrg()
 " au BufRead,BufNewFile *.ino set filetype=cpp
 au BufReadPost *.ino set syntax=cpp
 
+" make taglist aware of cython functions
+let tlist_pyrex_settings='python;c:classe;m:memder;f:function'
 " ############################################################################
 " ### Key mappings
 " ############################################################################
