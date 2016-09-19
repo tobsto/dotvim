@@ -201,6 +201,9 @@ map <leader>i :w <bar> make -j 16 install<CR>
 " ############################################################################
 " ### YouCompleteMe
 " ############################################################################
+let g:ycm_path_to_python_interpreter='/usr/bin/python'
+let g:ycm_server_python_interpreter='/usr/bin/python'
+"let g:ycm_python_binary_path='/usr/bin/python2'
 let g:ycm_key_detailed_diagnostics='<leader>yi'
 let g:ycm_global_ycm_extra_conf='~/.vim/ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
