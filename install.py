@@ -55,7 +55,7 @@ if cont("Initial installation"):
 if cont("Install TiGL C++ Style Checker"):
     run("mkdir -p ~/.vim/styleChecker")
     run("cd ~/.vim/styleChecker")
-    run("wget https://nsiqcppstyle.googlecode.com/files/nsiqcppstyle_0.2.2.3.tar.gz -O ~/.vim/styleChecker/nsiqcppstyle.tar.gz")
+    run("wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/nsiqcppstyle/nsiqcppstyle_0.2.2.3.tar.gz -O ~/.vim/styleChecker/nsiqcppstyle.tar.gz")
     run("tar -xzf ~/.vim/styleChecker/nsiqcppstyle.tar.gz -C ~/.vim/styleChecker/")
     run("rm ~/.vim/styleChecker/nsiqcppstyle.tar.gz")
 
