@@ -72,6 +72,10 @@ Bundle 'octol/vim-cpp-enhanced-highlight'
 
 " increment columns
 Bundle 'vim-scripts/VisIncr'
+" sort python imports
+Bundle 'fisadev/vim-isort'
+" python autoformat
+Bundle 'Chiel92/vim-autoformat'
 
 filetype plugin indent on     " required!
 "
@@ -246,6 +250,15 @@ let g:jedi#show_call_signatures = "1"
 
 let g:SuperTabDefaultCompletionType = "context"
 let g:jedi#popup_on_dot = 0
+
+" ############################################################################
+" ### Autoformater
+" ############################################################################
+map <leader>af :Autoformat<CR>
+" ############################################################################
+" ### python import sorting
+" ############################################################################
+map <leader>si :Isort<CR>
 
 " ############################################################################
 " ### TagList
