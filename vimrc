@@ -59,6 +59,8 @@ Bundle 'xolox/vim-session'
 Bundle 'vim-scripts/DoxygenToolkit.vim'
 " python
 Bundle 'klen/python-mode'
+" upgrade for autocompletion in python
+Bundle 'davidhalter/jedi-vim'
 " xml
 Bundle 'sukima/xmledit'
 " easy motion
@@ -240,16 +242,28 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " ############################################################################
 " ### Jedi
 " ############################################################################
-let g:jedi#goto_assignments_command = "<leader>jg"
-let g:jedi#goto_definitions_command = "<leader>jd"
-let g:jedi#documentation_command = "<leader>jh"
-let g:jedi#usages_command = "<leader>jn"
-let g:jedi#completions_command = "<leader>jc"
-let g:jedi#rename_command = "<leader>jr"
+"let g:jedi#goto_assignments_command = "<leader>jg"
+"let g:jedi#goto_definitions_command = "<leader>jd"
+"let g:jedi#documentation_command = "<leader>jh"
+"let g:jedi#usages_command = "<leader>jn"
+"let g:jedi#completions_command = "<leader>jc"
+"let g:jedi#rename_command = "<leader>jr"
+"let g:jedi#show_call_signatures = "1"
+
+"let g:SuperTabDefaultCompletionType = "context"
+"let g:jedi#popup_on_dot = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+let g:jedi#completions_enabled = 0
+let g:jedi#completions_command = ""
 let g:jedi#show_call_signatures = "1"
 
-let g:SuperTabDefaultCompletionType = "context"
-let g:jedi#popup_on_dot = 0
+let g:jedi#goto_assignments_command = "<leader>pa"
+let g:jedi#goto_definitions_command = "<leader>pd"
+let g:jedi#documentation_command = "<leader>pk"
+let g:jedi#usages_command = "<leader>pu"
+let g:jedi#rename_command = "<leader>pr"
 
 " ############################################################################
 " ### Autoformater
