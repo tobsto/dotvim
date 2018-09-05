@@ -207,8 +207,8 @@ map <leader>i :w <bar> make -j 16 install<CR>
 " ############################################################################
 " ### YouCompleteMe
 " ############################################################################
-let g:ycm_path_to_python_interpreter='/usr/bin/python'
-let g:ycm_server_python_interpreter='/usr/bin/python'
+let g:ycm_path_to_python_interpreter='python'
+let g:ycm_server_python_interpreter='python'
 "let g:ycm_python_binary_path='/usr/bin/python2'
 let g:ycm_key_detailed_diagnostics='<leader>yi'
 let g:ycm_global_ycm_extra_conf='~/.vim/ycm_extra_conf.py'
@@ -324,36 +324,38 @@ let g:DoxygenToolkit_licenseTag="\\copyright Copyright 2013 German Aerospace Cen
 " ############################################################################
 " turn of folding
 let g:pymode_folding = 0
-" remove automatic line numbers and put everything else back
+"" remove automatic line numbers and put everything else back
 let g:pymode_options = 0
 
-" syntax highlighting
+"" syntax highlighting
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_syntax_indent_errors = g:pymode_syntax_all
 let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
-" disaple rope autocompletion in favour of jedi
+"" disaple rope autocompletion in favour of jedi
 let g:pymode_rope = 0
 
-" Turn on code checking                                          *'g:pymode_lint'*
-let g:pymode_lint = 1
-" do not Check code on every save (if file has been modified)  *'g:pymode_lint_on_write'*
-let g:pymode_lint_on_write = 1
-" Check code when editing (on the fly)                        *'g:pymode_lint_on_fly'*
-let g:pymode_lint_on_fly = 0
-" Show error message if cursor placed at the error line  *'g:pymode_lint_message'*
-let g:pymode_lint_message = 1
-" ignore pep8 warnings: line to long
-let g:pymode_lint_ignore = "E501,E302,C901"
-" Auto open cwindow (quickfix) if any errors have been found  *'g:pymode_lint_cwindow'*
-let g:pymode_lint_cwindow = 1
+"" Turn off code checking                                          *'g:pymode_lint'*
+let g:pymode_lint = 0
+"" do not Check code on every save (if file has been modified)  *'g:pymode_lint_on_write'*
+"let g:pymode_lint_on_write = 0
+"" Check code when editing (on the fly)                        *'g:pymode_lint_on_fly'*
+"let g:pymode_lint_on_fly = 0
+"" Show error message if cursor placed at the error line  *'g:pymode_lint_message'*
+"let g:pymode_lint_message = 1
+"" ignore warnings: line to long, missing module docstring, 
+"let g:pymode_lint_ignore = "E501,E302,C901,C0301,C0111"
+"" Auto open cwindow (quickfix) if any errors have been found  *'g:pymode_lint_cwindow'*
+"let g:pymode_lint_cwindow = 0
 
 " ############################################################################
 " ### syntastic
 " ############################################################################
-" disable pep8 warnings: line to long
-" let g:syntastic_python_checker_args="--ignore=E501"
+" disable warnings: line to long, invalid names
+let g:syntastic_python_checkers = ['pep8']
+let g:syntastic_python_pep8_quiet_messages = {
+    \ "regex": ["E501.*", "E129.*", "E402.*"] }
 
 " ############################################################################
 " ### Airline
