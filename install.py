@@ -6,16 +6,18 @@ import subprocess
 parser = argparse.ArgumentParser(description='Install all vim plugins (use after git clone https://github.com/tstollenw/dotvim.git ~/.vim)')
 args = parser.parse_args()
 
+
 def cont(s):
-    cont=raw_input("%s - continue(Y/n)?" % s)
-    if cont!="n":
+    cont = raw_input("%s - continue(Y/n)?" % s)
+    if cont != "n":
         return True
     else:
         return False
 
+
 def isubuntu():
-    cont=raw_input("Standard installation (yes for Ubuntu, no for SLED) (Y/n)?")
-    if cont!="n":
+    cont = raw_input("Standard installation (yes for Ubuntu, no for SLED) (Y/n)?")
+    if cont != "n":
         return True
     else:
         return False
@@ -25,8 +27,8 @@ def run(cmd):
         subprocess.call(cmd, shell=True)
 
 # Installation:
+# git clone https://github.com/tstollenw/dotvim.git ~/.vim
 
-#git clone https://github.com/tstollenw/dotvim.git ~/.vim
 
 if cont("Initial installation"):
     run("sudo apt-get install cmake g++ vim libpython-dev ctags")

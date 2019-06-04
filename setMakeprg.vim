@@ -10,6 +10,8 @@ function! SetMakePrg()
     else
         if isdirectory(cwd . '/../build')
             set makeprg=make\ -C\ ../build
+        elseif isdirectory(cwd . '/../../../build')
+            set makeprg=make\ -C\ ../../build
         elseif isdirectory(cwd . '/../../build')
             set makeprg=make\ -C\ ../../build
         elseif isdirectory(cwd . '/build')

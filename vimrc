@@ -78,6 +78,12 @@ Bundle 'vim-scripts/VisIncr'
 Bundle 'fisadev/vim-isort'
 " python autoformat
 Bundle 'Chiel92/vim-autoformat'
+" latex plugin
+Bundle 'lervag/vimtex'
+" tags plugin
+"Bundle 'ludovicchabant/vim-gutentags'
+
+
 
 filetype plugin indent on     " required!
 "
@@ -111,8 +117,8 @@ set expandtab
 
 " swap/undo/backup
 set undofile
-set history=100
-set undolevels=100
+set history=500
+set undolevels=500
 set undodir=~/.vim/tmp/undo
 set backupdir=~/.vim/tmp/backup
 set directory=~/.vim/tmp/swap
@@ -207,8 +213,8 @@ map <leader>i :w <bar> make -j 16 install<CR>
 " ############################################################################
 " ### YouCompleteMe
 " ############################################################################
-let g:ycm_path_to_python_interpreter='python'
-let g:ycm_server_python_interpreter='python'
+let g:ycm_path_to_python_interpreter='python3'
+let g:ycm_server_python_interpreter='python3'
 "let g:ycm_python_binary_path='/usr/bin/python2'
 let g:ycm_key_detailed_diagnostics='<leader>yi'
 let g:ycm_global_ycm_extra_conf='~/.vim/ycm_extra_conf.py'
@@ -220,6 +226,10 @@ let g:syntastic_mode_map = { 'mode': 'active',
             \ 'active_filetypes': [],
             \ 'passive_filetypes': ['ino'] }
 
+" ############################################################################
+" ### Gutentags
+" ############################################################################
+"let g:gutentags_enabled
 " ############################################################################
 " ### UltiSnips
 " ############################################################################
@@ -273,6 +283,7 @@ map <leader>af :Autoformat<CR>
 " ### python import sorting
 " ############################################################################
 map <leader>si :Isort<CR>
+map <leader>wc :w !detex \| wc -w<CR>
 
 " ############################################################################
 " ### TagList
@@ -319,6 +330,9 @@ let g:DoxygenToolkit_authorName="Tobias Stollenwerk"
 let g:DoxygenToolkit_licenseTag="\\copyright Copyright 2013 German Aerospace Center (http://www.DLR.de)\\n\\n\rLicensed under the Apache License, Version 2.0 (the \"License\");\ryou may not use this file except in compliance with the License.\rYou may obtain a copy of the License at\r\r      http://www.apache.org/licenses/LICENSE-2.0\r\rUnless required by applicable law or agreed to in writing, software\rdistributed under the License is distributed on an \"AS IS\" BASIS,\rWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\rSee the License for the specific language governing permissions and\rlimitations under the License."
 
 
+" set rcfile 
+source ~/.vim/setRCFiles.vim
+call SetRCFiles()
 " ############################################################################
 " ### python-mode
 " ############################################################################
@@ -337,7 +351,8 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 let g:pymode_rope = 0
 
 "" Turn off code checking                                          *'g:pymode_lint'*
-let g:pymode_lint = 0
+let g:pymode_lint = 1
+let g:pymode_lint_config = rcfile_pylint
 "" do not Check code on every save (if file has been modified)  *'g:pymode_lint_on_write'*
 "let g:pymode_lint_on_write = 0
 "" Check code when editing (on the fly)                        *'g:pymode_lint_on_fly'*
@@ -352,10 +367,12 @@ let g:pymode_lint = 0
 " ############################################################################
 " ### syntastic
 " ############################################################################
-" disable warnings: line to long, invalid names
-let g:syntastic_python_checkers = ['pep8']
-let g:syntastic_python_pep8_quiet_messages = {
-    \ "regex": ["E501.*", "E129.*", "E402.*"] }
+"let g:syntastic_python_pylint_exe = 'python3 -m pylint'
+let g:syntastic_python_pylint_args = '--rcfile=' . rcfile_pylint
+let g:syntastic_python_pylint_rcfile = rcfile_pylint
+let g:syntastic_python_checkers = ['pep8', 'pylint']
+"let g:syntastic_python_pep8_quiet_messages = {
+    "\ "regex": ["E501.*", "E129.*", "E402.*"] }
 
 " ############################################################################
 " ### Airline
@@ -403,3 +420,17 @@ map <leader>sssssss :CheckStyleNext 7<CR>
 " ############################################################################
 source ~/.vim/styleFormatter.vim
 " map <leader>S :FormatCode<CR>
+" ############################################################################
+" spell check
+" ############################################################################
+:map <leader>le :setlocal spelllang=en_us<CR>
+:map <leader>lg :setlocal spelllang=de_de<CR>
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.tex setlocal spell
+autocmd BufRead,BufNewFile *.txt setlocal spell
+source ~/.vim/ToogleSpellCheck.vim
+
+" ############################################################################
+" Inport macros
+" ############################################################################
+source ~/.vim/macros.vim
