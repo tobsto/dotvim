@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import argparse
 import os
 import subprocess
@@ -8,7 +8,7 @@ args = parser.parse_args()
 
 
 def cont(s):
-    cont = raw_input("%s - continue(Y/n)?" % s)
+    cont = input("%s - continue(Y/n)?" % s)
     if cont != "n":
         return True
     else:
@@ -16,7 +16,7 @@ def cont(s):
 
 
 def isubuntu():
-    cont = raw_input("Standard installation (yes for Ubuntu, no for SLED) (Y/n)?")
+    cont = input("Standard installation (yes for Ubuntu, no for SLED) (Y/n)?")
     if cont != "n":
         return True
     else:
@@ -54,16 +54,9 @@ if cont("Initial installation"):
     # Install Bundles
     run("vim +BundleInstall +qall")
 
-if cont("Install TiGL C++ Style Checker"):
-    run("mkdir -p ~/.vim/styleChecker")
-    run("cd ~/.vim/styleChecker")
-    run("wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/nsiqcppstyle/nsiqcppstyle_0.2.2.3.tar.gz -O ~/.vim/styleChecker/nsiqcppstyle.tar.gz")
-    run("tar -xzf ~/.vim/styleChecker/nsiqcppstyle.tar.gz -C ~/.vim/styleChecker/")
-    run("rm ~/.vim/styleChecker/nsiqcppstyle.tar.gz")
-
 # Install YouCompleteMe
 if cont("Finish YouCompleteMe installation"):
-    run("cd ~/.vim/bundle/YouCompleteMe; ./install.sh --clang-completer; cd -")
+    run("cd ~/.vim/bundle/YouCompleteMe; python3 install.py; cd -")
 
 # Nice powerline symbols:
 # Source: https://powerline.readthedocs.org/en/latest/installation/linux.html#font-installation
