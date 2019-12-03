@@ -23,11 +23,11 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'Valloric/YouCompleteMe'
 " Snippets
 Bundle 'SirVer/ultisnips'
-"Bundle 'honza/vim-snippets'
 " Make YCM and UltiSnips work together
 Bundle 'ervandew/supertab'
 " Syntax checker
-Bundle 'scrooloose/syntastic'
+Bundle 'w0rp/ale'
+"Bundle 'scrooloose/syntastic'
 " Find pattern in files (requires ag=the_silver_searcher)
 Bundle 'rking/ag.vim'
 " Source code Browser
@@ -82,6 +82,8 @@ Bundle 'Chiel92/vim-autoformat'
 Bundle 'lervag/vimtex'
 " tags plugin
 "Bundle 'ludovicchabant/vim-gutentags'
+" conda env support
+Bundle 'cjrh/vim-conda'
 
 
 
@@ -211,20 +213,24 @@ map <leader>m :w <bar> make -j 16<CR>
 map <leader>i :w <bar> make -j 16 install<CR>
 
 " ############################################################################
+" ### Gundo
+" ############################################################################
+let g:gundo_prefer_python3 = 1
+" ############################################################################
 " ### YouCompleteMe
 " ############################################################################
-let g:ycm_path_to_python_interpreter='python3'
-let g:ycm_server_python_interpreter='python3'
+"let g:ycm_path_to_python_interpreter='/usr/bin/python3'
+"let g:ycm_server_python_interpreter='/usr/bin/python3'
 "let g:ycm_python_binary_path='/usr/bin/python2'
 let g:ycm_key_detailed_diagnostics='<leader>yi'
 let g:ycm_global_ycm_extra_conf='~/.vim/ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
 let g:ycm_complete_in_comments=1
 let g:ycm_complete_in_strings=1
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_mode_map = { 'mode': 'active',
-            \ 'active_filetypes': [],
-            \ 'passive_filetypes': ['ino'] }
+"let g:syntastic_always_populate_loc_list=1
+"let g:syntastic_mode_map = { 'mode': 'active',
+            "\ 'active_filetypes': [],
+            "\ 'passive_filetypes': ['ino'] }
 
 " ############################################################################
 " ### Gutentags
@@ -350,11 +356,13 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 "" disaple rope autocompletion in favour of jedi
 let g:pymode_rope = 0
 
-"" Turn off code checking                                          *'g:pymode_lint'*
-let g:pymode_lint = 1
-let g:pymode_lint_config = rcfile_pylint
-"" do not Check code on every save (if file has been modified)  *'g:pymode_lint_on_write'*
-"let g:pymode_lint_on_write = 0
+" Turn off code checking                                          *'g:pymode_lint'*
+let g:pymode_lint = 0
+let g:pymode_lint_checkers = ['pylint']
+let g:pymode_lint_options_pylint = {'rcfile': rcfile_pylint}
+
+" do not Check code on every save (if file has been modified)  *'g:pymode_lint_on_write'*
+let g:pymode_lint_on_write = 1
 "" Check code when editing (on the fly)                        *'g:pymode_lint_on_fly'*
 "let g:pymode_lint_on_fly = 0
 "" Show error message if cursor placed at the error line  *'g:pymode_lint_message'*
@@ -367,12 +375,14 @@ let g:pymode_lint_config = rcfile_pylint
 " ############################################################################
 " ### syntastic
 " ############################################################################
-"let g:syntastic_python_pylint_exe = 'python3 -m pylint'
-let g:syntastic_python_pylint_args = '--rcfile=' . rcfile_pylint
-let g:syntastic_python_pylint_rcfile = rcfile_pylint
-let g:syntastic_python_checkers = ['pep8', 'pylint']
-"let g:syntastic_python_pep8_quiet_messages = {
-    "\ "regex": ["E501.*", "E129.*", "E402.*"] }
+"let g:syntastic_python_pylint_args = '--rcfile=' . rcfile_pylint
+"let g:syntastic_python_pylint_rcfile = rcfile_pylint
+"let g:syntastic_python_checkers = ['pep8', 'pylint']
+let g:ale_linters = {'python': ['pylint']}
+let g:ale_python_pylint_options = ' --rcfile=' . rcfile_pylint
+"let g:ale_python_pylint_executable = '/usr/bin/pylint3'
+let g:ale_python_pylint_auto_pipenv = 1
+
 
 " ############################################################################
 " ### Airline
@@ -424,6 +434,7 @@ source ~/.vim/styleFormatter.vim
 " spell check
 " ############################################################################
 :map <leader>le :setlocal spelllang=en_us<CR>
+:map <leader>lb :setlocal spelllang=en_gb<CR>
 :map <leader>lg :setlocal spelllang=de_de<CR>
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.tex setlocal spell
