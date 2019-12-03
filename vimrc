@@ -27,7 +27,6 @@ Bundle 'SirVer/ultisnips'
 Bundle 'ervandew/supertab'
 " Syntax checker
 Bundle 'w0rp/ale'
-"Bundle 'scrooloose/syntastic'
 " Find pattern in files (requires ag=the_silver_searcher)
 Bundle 'rking/ag.vim'
 " Source code Browser
@@ -46,31 +45,19 @@ Bundle 'tpope/vim-abolish'
 Bundle 'vim-scripts/mru.vim'
 " close all buffers but the current
 Bundle 'BufOnly.vim'
-" switch between source and header file quickly
-Bundle 'a.vim'
 " quick switching between buffers
 Bundle 'bufexplorer.zip'
 " Save vim session
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
-" cmake integration
-" Bundle 'jalcine/cmake.vim'
-" Doxygen 
-Bundle 'vim-scripts/DoxygenToolkit.vim'
 " python
 Bundle 'klen/python-mode'
 " upgrade for autocompletion in python
 Bundle 'davidhalter/jedi-vim'
-" xml
-Bundle 'sukima/xmledit'
-" easy motion
-Bundle 'Lokaltog/vim-easymotion'
 " color themes
 Bundle 'flazz/vim-colorschemes'
 " comment/uncommend code
 Bundle 'scrooloose/nerdcommenter'
-
-Bundle 'octol/vim-cpp-enhanced-highlight'
 
 " increment columns
 Bundle 'vim-scripts/VisIncr'
@@ -80,8 +67,6 @@ Bundle 'fisadev/vim-isort'
 Bundle 'Chiel92/vim-autoformat'
 " latex plugin
 Bundle 'lervag/vimtex'
-" tags plugin
-"Bundle 'ludovicchabant/vim-gutentags'
 " conda env support
 Bundle 'cjrh/vim-conda'
 
@@ -159,12 +144,6 @@ set wildchar=<Tab> wildmenu wildmode=full
 "nnoremap <F10> :b <C-Z>
 
 
-" syntax highlighting for arduino files
-" au BufRead,BufNewFile *.ino set filetype=cpp
-au BufReadPost *.ino set syntax=cpp
-
-" make taglist aware of cython functions
-let tlist_pyrex_settings='python;c:classe;m:memder;f:function'
 " ############################################################################
 " ### External functions
 " ############################################################################
@@ -224,9 +203,18 @@ map <leader>m :w <bar> make -j 16<CR>
 map <leader>i :w <bar> make -j 16 install<CR>
 
 " ############################################################################
+" ### Language specific tweaks
+" ############################################################################
+" syntax highlighting for arduino files
+au BufReadPost *.ino set syntax=cpp
+" make taglist aware of cython functions
+let tlist_pyrex_settings='python;c:classe;m:memder;f:function'
+
+" ############################################################################
 " ### Gundo
 " ############################################################################
 let g:gundo_prefer_python3 = 1
+
 " ############################################################################
 " ### YouCompleteMe
 " ############################################################################
@@ -238,21 +226,10 @@ let g:ycm_global_ycm_extra_conf='~/.vim/ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
 let g:ycm_complete_in_comments=1
 let g:ycm_complete_in_strings=1
-"let g:syntastic_always_populate_loc_list=1
-"let g:syntastic_mode_map = { 'mode': 'active',
-            "\ 'active_filetypes': [],
-            "\ 'passive_filetypes': ['ino'] }
 
-" ############################################################################
-" ### Gutentags
-" ############################################################################
-"let g:gutentags_enabled
 " ############################################################################
 " ### UltiSnips
 " ############################################################################
-"let g:UltiSnipsExpandTrigger="<C-j>"
-"let g:UltiSnipsJumpForwardTrigger="<C-j>"
-"let g:UltiSnipsJumpBackwardTrigger="<C-S-j>"
 " set ultisnips search directory
 let g:runtimepath = "~/.vim/"
 
@@ -269,16 +246,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " ############################################################################
 " ### Jedi
 " ############################################################################
-"let g:jedi#goto_assignments_command = "<leader>jg"
-"let g:jedi#goto_definitions_command = "<leader>jd"
-"let g:jedi#documentation_command = "<leader>jh"
-"let g:jedi#usages_command = "<leader>jn"
-"let g:jedi#completions_command = "<leader>jc"
-"let g:jedi#rename_command = "<leader>jr"
-"let g:jedi#show_call_signatures = "1"
-
 "let g:SuperTabDefaultCompletionType = "context"
-"let g:jedi#popup_on_dot = 0
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
@@ -286,16 +254,12 @@ let g:jedi#completions_enabled = 0
 let g:jedi#completions_command = ""
 let g:jedi#show_call_signatures = "1"
 
-let g:jedi#goto_assignments_command = "<leader>pa"
-let g:jedi#goto_definitions_command = "<leader>pd"
-let g:jedi#documentation_command = "<leader>pk"
-let g:jedi#usages_command = "<leader>pu"
-let g:jedi#rename_command = "<leader>pr"
 
 " ############################################################################
 " ### Autoformater
 " ############################################################################
 map <leader>af :Autoformat<CR>
+
 " ############################################################################
 " ### python import sorting
 " ############################################################################
@@ -346,26 +310,13 @@ let g:pymode_rope = 0
 
 " Turn off code checking                                          *'g:pymode_lint'*
 let g:pymode_lint = 0
-let g:pymode_lint_checkers = ['pylint']
-let g:pymode_lint_options_pylint = {'rcfile': rcfile_pylint}
-
-" do not Check code on every save (if file has been modified)  *'g:pymode_lint_on_write'*
-let g:pymode_lint_on_write = 1
-"" Check code when editing (on the fly)                        *'g:pymode_lint_on_fly'*
-"let g:pymode_lint_on_fly = 0
-"" Show error message if cursor placed at the error line  *'g:pymode_lint_message'*
-"let g:pymode_lint_message = 1
-"" ignore warnings: line to long, missing module docstring, 
-"let g:pymode_lint_ignore = "E501,E302,C901,C0301,C0111"
-"" Auto open cwindow (quickfix) if any errors have been found  *'g:pymode_lint_cwindow'*
-"let g:pymode_lint_cwindow = 0
+"let g:pymode_lint_checkers = ['pylint']
+"let g:pymode_lint_options_pylint = {'rcfile': rcfile_pylint}
+"let g:pymode_lint_on_write = 1
 
 " ############################################################################
-" ### syntastic
+" ### ale
 " ############################################################################
-"let g:syntastic_python_pylint_args = '--rcfile=' . rcfile_pylint
-"let g:syntastic_python_pylint_rcfile = rcfile_pylint
-"let g:syntastic_python_checkers = ['pep8', 'pylint']
 let g:ale_linters = {'python': ['pylint']}
 let g:ale_python_pylint_options = ' --rcfile=' . rcfile_pylint
 "let g:ale_python_pylint_executable = '/usr/bin/pylint3'
@@ -389,6 +340,8 @@ let g:airline_powerline_fonts=1
 
 
 " ############################################################################
+" ### Colors
+" ############################################################################
 " IMPORTANT: Uncomment one of the following lines to force
 " " using 256 colors (or 88 colors) if your terminal supports it,
 " " but does not automatically use 256 colors by default.
@@ -400,24 +353,7 @@ colorscheme molokai
 " colorscheme solarized
 "
 
-" ############################################################################
-" include my own check style script and map key
-" ############################################################################
-source ~/.vim/styleChecker.vim
-map <leader>s :CheckStyle<CR>
-map <leader>ss :CheckStyleNext 2<CR>
-map <leader>sss :CheckStyleNext 3<CR>
-map <leader>ssss :CheckStyleNext 4<CR>
-map <leader>sssss :CheckStyleNext 5<CR>
-map <leader>ssssss :CheckStyleNext 6<CR>
-map <leader>sssssss :CheckStyleNext 7<CR>
 
-
-" ############################################################################
-" include my own style formatter
-" ############################################################################
-source ~/.vim/styleFormatter.vim
-" map <leader>S :FormatCode<CR>
 " ############################################################################
 " spell check
 " ############################################################################
@@ -428,6 +364,7 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.tex setlocal spell
 autocmd BufRead,BufNewFile *.txt setlocal spell
 source ~/.vim/ToogleSpellCheck.vim
+
 " ############################################################################
 " Conda 
 " ############################################################################

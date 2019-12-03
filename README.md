@@ -17,7 +17,7 @@ Plugins
 - Autocompletion: YouCompleteMe (automatically and TAB)
 - Quick file access: CtrlP (ctrl-p)
 - Snippets: Ultisnips (insert mode: ctrl-x, ctrl-y)
-- Syntax checker: syntastic (automatically)
+- Syntax checker: ale (automatically)
 - Find pattern in files: ag (F5 or ,f)
 - Advance status line and tabline: airline (automatically)
 - Git: fugative
@@ -25,6 +25,6 @@ Plugins
 - Sophisticated search and replace: abolish (:%Subvert/bla/blubb)
 - Most recently used files: mru (,m)
 - Close all buffers but the current: BufOnly.vim (:BufOnly)
-- Switch between source and header file quickly: a.vim (:A)
 - Quick switching between buffers: bufexplorer (,b)
 - Save vim session: vim-session (:SaveSession, :OpenSession)
+- etc...
