@@ -31,7 +31,7 @@ def run(cmd):
 
 
 if cont("Initial installation"):
-    run("sudo apt-get install cmake g++ vim libpython-dev ctags")
+    run("sudo apt-get install cmake3 vim python3-dev")
 
     run("git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle")
 

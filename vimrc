@@ -158,10 +158,6 @@ set wildchar=<Tab> wildmenu wildmode=full
 "set wildcharm=<C-Z>
 "nnoremap <F10> :b <C-Z>
 
-" set make command to use parent build directory
-" set makeprg=make\ -C\ ../build
-source ~/.vim/setMakeprg.vim
-call SetMakePrg()
 
 " syntax highlighting for arduino files
 " au BufRead,BufNewFile *.ino set filetype=cpp
@@ -169,6 +165,21 @@ au BufReadPost *.ino set syntax=cpp
 
 " make taglist aware of cython functions
 let tlist_pyrex_settings='python;c:classe;m:memder;f:function'
+" ############################################################################
+" ### External functions
+" ############################################################################
+" set rcfile 
+" this sets the rcfile_pylint variable
+source ~/.vim/setRCFiles.vim
+call SetRCFiles()
+" set make command to use parent build directory
+" set makeprg=make\ -C\ ../build
+source ~/.vim/setMakeprg.vim
+call SetMakePrg()
+" set python interpreter
+" this sets the python_interpreter variable
+source ~/.vim/setPythonInterpreter.vim
+call SetPythonInterpreter()
 " ############################################################################
 " ### Key mappings
 " ############################################################################
@@ -219,9 +230,9 @@ let g:gundo_prefer_python3 = 1
 " ############################################################################
 " ### YouCompleteMe
 " ############################################################################
-"let g:ycm_path_to_python_interpreter='/usr/bin/python3'
-"let g:ycm_server_python_interpreter='/usr/bin/python3'
-"let g:ycm_python_binary_path='/usr/bin/python2'
+let g:ycm_path_to_python_interpreter=python_interpreter
+let g:ycm_server_python_interpreter='/usr/bin/python3'
+let g:ycm_python_binary_path=python_interpreter
 let g:ycm_key_detailed_diagnostics='<leader>yi'
 let g:ycm_global_ycm_extra_conf='~/.vim/ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
@@ -316,29 +327,6 @@ let g:ctrlp_open_multiple_files = '1ij'
 " Disable autoload of default session
 let g:session_autoload = 'no'
 "
-" ############################################################################
-" ### DoxygenToolkit
-" ############################################################################
-let g:DoxygenToolkit_briefTag_pre="\\brief "
-let g:DoxygenToolkit_paramTag_pre="\\param "
-let g:DoxygenToolkit_tparamTag_pre="\\tparam "
-let g:DoxygenToolkit_returnTag_pre="\\return "
-let g:DoxygenToolkit_throwTag_pre="\\throw "
-let g:DoxygenToolkit_fileTag="\\file "
-let g:DoxygenToolkit_authorTag="\\author "
-let g:DoxygenToolkit_versionTag="\\version "
-let g:DoxygenToolkit_dateTag="\\date "
-let g:DoxygenToolkit_classTag="\\class "
-let g:DoxygenToolkit_blockTag="\\name "
-
-let g:DoxygenToolkit_authorName="Tobias Stollenwerk"
-" DLR license
-let g:DoxygenToolkit_licenseTag="\\copyright Copyright 2013 German Aerospace Center (http://www.DLR.de)\\n\\n\rLicensed under the Apache License, Version 2.0 (the \"License\");\ryou may not use this file except in compliance with the License.\rYou may obtain a copy of the License at\r\r      http://www.apache.org/licenses/LICENSE-2.0\r\rUnless required by applicable law or agreed to in writing, software\rdistributed under the License is distributed on an \"AS IS\" BASIS,\rWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\rSee the License for the specific language governing permissions and\rlimitations under the License."
-
-
-" set rcfile 
-source ~/.vim/setRCFiles.vim
-call SetRCFiles()
 " ############################################################################
 " ### python-mode
 " ############################################################################
@@ -440,6 +428,11 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.tex setlocal spell
 autocmd BufRead,BufNewFile *.txt setlocal spell
 source ~/.vim/ToogleSpellCheck.vim
+" ############################################################################
+" Conda 
+" ############################################################################
+" suppress start up message
+let g:conda_startup_msg_suppress = 1
 
 " ############################################################################
 " Inport macros
