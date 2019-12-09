@@ -36,6 +36,10 @@ if cont("Initial installation"):
     # Install plugins
     run("vim +PlugInstall")
 
+ # Install YouCompleteMe
+if cont("Finish YouCompleteMe installation"):
+    run("cd ~/.vim/plugins/YouCompleteMe; python3 install.py; cd -")
+ 
 # Nice powerline symbols:
 # Source: https://powerline.readthedocs.org/en/latest/installation/linux.html#font-installation
 if cont("Install powerline symbols"):
