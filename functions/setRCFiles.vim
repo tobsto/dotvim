@@ -4,7 +4,7 @@
 function! SetRCFiles()
     let cwd = getcwd()
     let home = $HOME
-    if filereadable(cwd .'.pylintrc')
+    if filereadable(cwd .'/.pylintrc')
         let g:rcfile_pylint=cwd . '/.pylintrc'
     elseif filereadable(cwd .'/../.pylintrc')
         let g:rcfile_pylint=cwd . '/../.pylintrc'

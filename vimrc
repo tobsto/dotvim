@@ -45,6 +45,8 @@ set sidescroll=1 " for fast terminals
 
 " allow buffer switch without saving
 set hidden
+" conveniently access buffers
+set wildchar=<Tab> wildmenu wildmode=full
 " ############################################################################
 " ### External functions
 " ############################################################################
@@ -197,7 +199,7 @@ let g:ycm_semantic_triggers = {'python': ['re!from\s+\S+\s+import\s']}
 " ############################################################################
 " set ultisnips search directory
 let g:runtimepath = "~/.vim/"
-let g:UltiSnipsSnippetDirectories=["~/.vim/snippets/"]
+let g:UltiSnipsSnippetDirectories=["~/.vim/ultisnips/"]
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']

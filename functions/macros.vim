@@ -4,3 +4,5 @@
 " usecase: bibtex
 " \u: find next uppercase
 map <leader>mdc /\u<CR>i{<ESC>lli}<ESC>
+" delete all buffers but one
+command! BufOnly silent! execute "%bd|e#|bd#"
