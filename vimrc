@@ -182,7 +182,7 @@ let g:session_directory = '~/.vim/tmp/sessions/'
 "###############################################################################
 "### Options for YouCompleteMe Plugin
 "###############################################################################
-let g:ycm_path_to_python_interpreter=python_interpreter
+let g:ycm_path_to_python_interpreter='/usr/bin/python3'
 let g:ycm_python_binary_path=python_interpreter
 map <leader>yc :YcmForceCompileAndDiagnostics<CR>
 map <leader>yg :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -216,8 +216,8 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " ############################################################################
 let g:ale_linters = {'python': ['pylint']}
 let g:ale_python_pylint_options = ' --rcfile=' . rcfile_pylint
-"let g:ale_python_pylint_executable = '/usr/bin/pylint3'
-let g:ale_python_pylint_auto_pipenv = 1
+let g:ale_python_pylint_use_global = 0
+"let g:ale_python_pylint_executable = python_interpreter
 
 
 " ############################################################################
