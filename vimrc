@@ -182,7 +182,7 @@ let g:session_directory = '~/.vim/tmp/sessions/'
 "###############################################################################
 "### Options for YouCompleteMe Plugin
 "###############################################################################
-let g:ycm_path_to_python_interpreter=python_interpreter
+"let g:ycm_path_to_python_interpreter=python_interpreter
 let g:ycm_python_binary_path=python_interpreter
 map <leader>yc :YcmForceCompileAndDiagnostics<CR>
 map <leader>yg :YcmCompleter GoToDefinitionElseDeclaration<CR>
