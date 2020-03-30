@@ -137,6 +137,8 @@ map <c-k> <PageUp>
 map <c-j> <PageDown>
 " set leader key to ','
 let mapleader=','
+" set localleader key to ','
+let maplocalleader=','
 " Open and close NERDTree with F2 or ,n
 map <F2> :NERDTreeToggle<CR>
 map <leader>n :NERDTreeToggle<CR>
@@ -172,6 +174,10 @@ map <leader>m :w <bar> make -j 16<CR>
 " map parallel make install command to ,i
 map <leader>i :w <bar> make -j 16 install<CR>
 
+" spellcheck
+:map <leader>se :setlocal spelllang=en_us<CR>
+:map <leader>sb :setlocal spelllang=en_gb<CR>
+:map <leader>sg :setlocal spelllang=de_de<CR>
 " ############################################################################
 " ### Options for Session Plugin
 " ############################################################################
@@ -184,9 +190,6 @@ let g:session_directory = '~/.vim/tmp/sessions/'
 "###############################################################################
 "let g:ycm_path_to_python_interpreter=python_interpreter
 let g:ycm_python_binary_path=python_interpreter
-map <leader>yc :YcmForceCompileAndDiagnostics<CR>
-map <leader>yg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-map <leader>yd :YcmDebugInfo<CR>
 let g:ycm_key_detailed_diagnostics='<leader>yi'
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_min_num_of_chars_for_completion = 1
@@ -248,9 +251,6 @@ colorscheme molokai
 " ############################################################################
 " Options for Spell Check Plugin
 " ############################################################################
-:map <leader>le :setlocal spelllang=en_us<CR>
-:map <leader>lb :setlocal spelllang=en_gb<CR>
-:map <leader>lg :setlocal spelllang=de_de<CR>
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.tex setlocal spell
 autocmd BufRead,BufNewFile *.txt setlocal spell
