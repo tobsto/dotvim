@@ -68,6 +68,12 @@ call SetPythonInterpreter()
 " define 'ToogleSpellCheck' function
 source ~/.vim/functions/ToogleSpellCheck.vim
 
+" define 'MarkdownPreview' function
+source ~/.vim/functions/MarkdownPreview.vim
+
+" define 'TikzPreview' function
+source ~/.vim/functions/TikzPreview.vim
+
 " other macros
 source ~/.vim/functions/macros.vim
 " ############################################################################
@@ -110,7 +116,8 @@ call plug#begin('~/.vim/plugins')
     Plug('xolox/vim-misc')
     Plug('xolox/vim-session')
     " color themes
-    Plug('flazz/vim-colorschemes')
+    "Plug('flazz/vim-colorschemes')
+    Plug('rafi/awesome-vim-colorschemes')
     " comment/uncommend code
     Plug('scrooloose/nerdcommenter')
 
@@ -126,6 +133,8 @@ call plug#begin('~/.vim/plugins')
     Plug('lervag/vimtex')
     " conda env support
     Plug('cjrh/vim-conda')
+    " one sentence per line formatting
+    Plug('Konfekt/vim-sentence-chopper')
 
 call plug#end()
 
@@ -245,7 +254,13 @@ let g:airline_powerline_fonts=1
 " " using 256 colors (or 88 colors) if your terminal supports it,
 " " but does not automatically use 256 colors by default.
 set t_Co=256
+" default colorscheme
 colorscheme molokai
+" uncomment next 4 lines for working outside in bright conditions
+"let g:gruvbox_contrast_dark='hard'
+"let g:gruvbox_contrast_light='hard'
+"set background=light
+"colorscheme gruvbox
 
 
 " ############################################################################
@@ -260,3 +275,18 @@ autocmd BufRead,BufNewFile *.txt setlocal spell
 " ############################################################################
 " suppress start up message
 let g:conda_startup_msg_suppress = 1
+
+" ############################################################################
+" Shortcuts for markdown preview
+" ############################################################################
+autocmd BufRead,BufNewFile *.md  map <leader>ll :call MarkdownCompile()<CR> | map <leader>lv :call MarkdownPreview()<CR>
+
+" ############################################################################
+" latexmk configuration
+" ############################################################################
+let g:vimtex_compiler_latexmk = {
+    \ 'options' : [
+    \   '-shell-escape',
+    \ ],
+    \}
+
