@@ -132,9 +132,9 @@ call plug#begin('~/.vim/plugins')
     " latex plugin
     Plug('lervag/vimtex')
     " conda env support
-    Plug('cjrh/vim-conda')
     " one sentence per line formatting
     Plug('Konfekt/vim-sentence-chopper')
+    " Plug('cjrh/vim-conda')
 
 call plug#end()
 
