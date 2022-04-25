@@ -1,4 +1,10 @@
-Installation
+DEPRECATED
+===============
+
+
+
+
+~~Installation~~
 ============
 
     git clone https://github.com/tstollenw/dotvim.git ~/.vim
